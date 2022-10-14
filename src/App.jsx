@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
+import Notes from "./components/Notes";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -18,14 +19,7 @@ function App() {
 
   return (
     <>
-      {
-        notes.map(note => (
-          <div>
-            <p>{note.title}</p>
-            <p>{note.text}</p>
-          </div>
-        ))
-      }
+      <Notes notes={notes} />
     </>
   );
 }
