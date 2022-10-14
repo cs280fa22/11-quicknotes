@@ -6,8 +6,8 @@ function Notes(props) {
 
   return (
     <>
-      {notes.map((note) => (
-        <Note note={note} />
+      {notes.map((note, index) => (
+        <Note key={index} note={note} />
       ))}
     </>
   );
