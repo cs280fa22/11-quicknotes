@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
 import Notes from "./components/Notes";
 import { Container } from "@mantine/core";
+import Search from "./components/Search";
 
 function App() {
   const [notes, setNotes] = useState([]);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const fakeNotes = [];
@@ -20,6 +22,7 @@ function App() {
 
   return (
     <Container>
+      <Search query={query} setQuery={setQuery} />
       <Notes notes={notes} />
     </Container>
   );
