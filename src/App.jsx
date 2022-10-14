@@ -23,7 +23,7 @@ function App() {
   return (
     <Container>
       <Search query={query} setQuery={setQuery} />
-      <Notes notes={notes} />
+      <Notes notes={notes} query={query} />
     </Container>
   );
 }

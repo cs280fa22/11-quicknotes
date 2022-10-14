@@ -6,7 +6,7 @@ function Search(props) {
   const { query, setQuery } = props;
 
   const handleOnChange = (event) => {
-    setQuery(event.target.value.trim());
+    setQuery(event.target.value);
   };
 
   return (

@@ -3,13 +3,19 @@ import PropTypes from "prop-types";
 import { Accordion } from "@mantine/core";
 
 function Notes(props) {
-  const { notes } = props;
+  const { notes, query } = props;
 
   return (
     <Accordion chevronPosition="left">
-      {notes.map((note, index) => (
-        <Note key={index} note={note} />
-      ))}
+      {notes
+        .filter(
+          (note) =>
+            note.title.toLowerCase().includes(query.trim().toLowerCase()) ||
+            note.text.toLowerCase().includes(query.trim().toLowerCase())
+        )
+        .map((note, index) => (
+          <Note key={index} note={note} />
+        ))}
     </Accordion>
   );
 }
@@ -17,6 +23,7 @@ function Notes(props) {
 export default Notes;
 
 Notes.propTypes = {
+  query: PropTypes.string,
   notes: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
