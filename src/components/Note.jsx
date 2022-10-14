@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 import { Accordion } from "@mantine/core";
+import NoteControl from "./NoteControl";
 
 function Note(props) {
   const { note } = props;
 
   return (
     <Accordion.Item value={note.title}>
-      <Accordion.Control>{note.title}</Accordion.Control>
+      {/* <Accordion.Control>{note.title}</Accordion.Control> */}
+      <NoteControl note={note} />
       <Accordion.Panel>{note.text}</Accordion.Panel>
     </Accordion.Item>
   );
