@@ -20,10 +20,14 @@ function App() {
     setNotes(fakeNotes);
   }, []);
 
+  const remove = (id) => {
+    setNotes((notes) => notes.filter((note) => note.id !== id));
+  };
+
   return (
     <Container>
       <Search query={query} setQuery={setQuery} />
-      <Notes notes={notes} query={query} />
+      <Notes notes={notes} query={query} remove={remove} />
     </Container>
   );
 }

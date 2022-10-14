@@ -3,10 +3,10 @@ import { Accordion, ActionIcon, Box } from "@mantine/core";
 import { IconTrashX } from "@tabler/icons";
 
 function NoteControl(props) {
-  const { note } = props;
+  const { note, remove } = props;
 
   const handleOnRemove = () => {
-    // TODO remove the note!
+    remove(note.id);
   };
 
   return (
@@ -22,6 +22,7 @@ function NoteControl(props) {
 export default NoteControl;
 
 NoteControl.propTypes = {
+  remove: PropTypes.func.isRequired,
   note: PropTypes.shape({
     title: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
