@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
 import Notes from "./components/Notes";
+import { Container } from "@mantine/core";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -18,9 +19,9 @@ function App() {
   }, []);
 
   return (
-    <>
+    <Container>
       <Notes notes={notes} />
-    </>
+    </Container>
   );
 }
 
