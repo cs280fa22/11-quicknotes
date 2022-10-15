@@ -2,12 +2,15 @@ import { IconNote } from "@tabler/icons";
 import { Grid, Button } from "@mantine/core";
 import Search from "./Search";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 function Header(props) {
   const { query, setQuery, add } = props;
+  const navigate = useNavigate();
 
   const handleOnClick = () => {
     add();
+    navigate("/edit");
   };
 
   return (

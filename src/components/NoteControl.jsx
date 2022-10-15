@@ -1,13 +1,15 @@
 import PropTypes from "prop-types";
 import { Accordion, ActionIcon, Box } from "@mantine/core";
 import { IconTrashX, IconPencil } from "@tabler/icons";
+import { useNavigate } from "react-router-dom";
 
 function NoteControl(props) {
   const { note, remove } = props;
   const { id, title } = note;
+  const navigate = useNavigate();
 
   const handleOnEdit = () => {
-    // TODO Implement it
+    navigate("/edit");
   };
 
   const handleOnRemove = () => {

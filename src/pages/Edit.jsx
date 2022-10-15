@@ -1,10 +1,12 @@
 import { Button, Container, Group, Stack } from "@mantine/core";
 import { TextInput, Textarea } from "@mantine/core";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Edit() {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const navigate = useNavigate();
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -16,10 +18,12 @@ function Edit() {
 
   const handleSave = () => {
     console.log({ title, text });
+    navigate("/", { replace: true });
   };
 
   const handleCancel = () => {
-    console.log(cancel);
+    console.log("cancel");
+    navigate("/", { replace: true });
   };
 
   return (
