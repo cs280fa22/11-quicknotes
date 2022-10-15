@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 function NoteControl(props) {
   const { note, remove } = props;
-  const { id, title } = note;
+  const { id, title, text } = note;
   const navigate = useNavigate();
 
   const handleOnEdit = () => {
-    navigate("/edit");
+    navigate("/edit", { state: { id, title, text } });
   };
 
   const handleOnRemove = () => {

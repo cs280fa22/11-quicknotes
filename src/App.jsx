@@ -34,6 +34,18 @@ function App() {
     setNotes((notes) => [...notes, note]);
   };
 
+  const edit = (id, title, text) => {
+    setNotes((notes) =>
+      notes.map((note) => {
+        if (note.id !== id) {
+          return note;
+        } else {
+          return { id, title, text };
+        }
+      })
+    );
+  };
+
   return (
     <Routes>
       <Route
@@ -48,7 +60,7 @@ function App() {
           />
         }
       />
-      <Route path="/edit" element={<Edit />} />
+      <Route path="/edit" element={<Edit edit={edit} />} />
     </Routes>
   );
 }

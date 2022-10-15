@@ -1,12 +1,27 @@
 import { Button, Container, Group, Stack } from "@mantine/core";
 import { TextInput, Textarea } from "@mantine/core";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { useNavigate, useLocation } from "react-router-dom";
 
-function Edit() {
+function Edit(props) {
+  const { edit } = props;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { id, text: _text, title: _title, mode } = location.state;
+
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (_text !== text) {
+      setText(_text);
+    }
+
+    if (_title !== title) {
+      setTitle(_title);
+    }
+  }, [_text, _title]);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -17,7 +32,7 @@ function Edit() {
   };
 
   const handleSave = () => {
-    console.log({ title, text });
+    edit(id, title, text);
     navigate("/", { replace: true });
   };
 
@@ -59,3 +74,7 @@ function Edit() {
 }
 
 export default Edit;
+
+Edit.propTypes = {
+  edit: PropTypes.func,
+};
