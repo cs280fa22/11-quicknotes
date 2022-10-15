@@ -4,10 +4,10 @@ import Search from "./Search";
 import PropTypes from "prop-types";
 
 function Header(props) {
-  const { query, setQuery } = props;
+  const { query, setQuery, add } = props;
 
   const handleOnClick = () => {
-    // TODO implement me!
+    add();
   };
 
   return (
@@ -34,4 +34,5 @@ export default Header;
 Header.propTypes = {
   query: PropTypes.string,
   setQuery: PropTypes.func,
+  add: PropTypes.func,
 };

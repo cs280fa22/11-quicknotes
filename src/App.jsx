@@ -24,9 +24,19 @@ function App() {
     setNotes((notes) => notes.filter((note) => note.id !== id));
   };
 
+  const add = () => {
+    const note = {
+      id: faker.datatype.uuid(),
+      title: faker.lorem.sentence(),
+      text: faker.lorem.paragraph(),
+    };
+
+    setNotes((notes) => [...notes, note]);
+  };
+
   return (
     <Container>
-      <Header query={query} setQuery={setQuery} />
+      <Header query={query} setQuery={setQuery} add={add} />
       <Notes notes={notes} query={query} remove={remove} />
     </Container>
   );
