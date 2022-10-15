@@ -27,11 +27,13 @@ function App() {
   const add = () => {
     const note = {
       id: faker.datatype.uuid(),
-      title: faker.lorem.sentence(),
-      text: faker.lorem.paragraph(),
+      title: "New note title",
+      text: "New note text",
     };
 
     setNotes((notes) => [...notes, note]);
+
+    return note;
   };
 
   const edit = (id, title, text) => {
@@ -60,7 +62,7 @@ function App() {
           />
         }
       />
-      <Route path="/edit" element={<Edit edit={edit} />} />
+      <Route path="/edit" element={<Edit edit={edit} remove={remove} />} />
     </Routes>
   );
 }

@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useNavigate, useLocation } from "react-router-dom";
 
 function Edit(props) {
-  const { edit } = props;
+  const { edit, remove } = props;
   const navigate = useNavigate();
   const location = useLocation();
   const { id, text: _text, title: _title, mode } = location.state;
@@ -37,7 +37,9 @@ function Edit(props) {
   };
 
   const handleCancel = () => {
-    console.log("cancel");
+    if (mode === "remove-on-cancel") {
+      remove(id);
+    }
     navigate("/", { replace: true });
   };
 
@@ -76,5 +78,6 @@ function Edit(props) {
 export default Edit;
 
 Edit.propTypes = {
-  edit: PropTypes.func,
+  edit: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
 };

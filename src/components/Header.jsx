@@ -9,8 +9,8 @@ function Header(props) {
   const navigate = useNavigate();
 
   const handleOnClick = () => {
-    add();
-    navigate("/edit");
+    const { id, title, text } = add();
+    navigate("/edit", { state: { id, title, text, mode: "remove-on-cancel" } });
   };
 
   return (
