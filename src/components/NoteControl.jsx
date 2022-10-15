@@ -1,17 +1,25 @@
 import PropTypes from "prop-types";
 import { Accordion, ActionIcon, Box } from "@mantine/core";
-import { IconTrashX } from "@tabler/icons";
+import { IconTrashX, IconPencil } from "@tabler/icons";
 
 function NoteControl(props) {
   const { note, remove } = props;
+  const { id, title } = note;
+
+  const handleOnEdit = () => {
+    // TODO Implement it
+  };
 
   const handleOnRemove = () => {
-    remove(note.id);
+    remove(id);
   };
 
   return (
     <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Accordion.Control>{note.title}</Accordion.Control>
+      <Accordion.Control>{title}</Accordion.Control>
+      <ActionIcon onClick={handleOnEdit} size="lg">
+        <IconPencil size={16} />
+      </ActionIcon>
       <ActionIcon onClick={handleOnRemove} size="lg">
         <IconTrashX size={16} />
       </ActionIcon>
