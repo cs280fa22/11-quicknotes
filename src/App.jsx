@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
-import Notes from "./components/Notes";
 import { Container } from "@mantine/core";
-import Header from "./components/Header";
 import Edit from "./pages/Edit";
+import Home from "./pages/Home";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -37,8 +36,13 @@ function App() {
 
   return (
     <Container>
-      <Header query={query} setQuery={setQuery} add={add} />
-      <Notes notes={notes} query={query} remove={remove} />
+      <Home
+        notes={notes}
+        query={query}
+        setQuery={setQuery}
+        add={add}
+        remove={remove}
+      />
       <Edit />
     </Container>
   );
