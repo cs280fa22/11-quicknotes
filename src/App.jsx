@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
-import { Container } from "@mantine/core";
+import { Routes, Route } from "react-router-dom";
 import Edit from "./pages/Edit";
 import Home from "./pages/Home";
 
@@ -35,16 +35,21 @@ function App() {
   };
 
   return (
-    <Container>
-      <Home
-        notes={notes}
-        query={query}
-        setQuery={setQuery}
-        add={add}
-        remove={remove}
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Home
+            notes={notes}
+            query={query}
+            setQuery={setQuery}
+            add={add}
+            remove={remove}
+          />
+        }
       />
-      <Edit />
-    </Container>
+      <Route path="/edit" element={<Edit />} />
+    </Routes>
   );
 }
 
