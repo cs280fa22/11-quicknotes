@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
 import Notes from "./components/Notes";
 import { Container } from "@mantine/core";
-import Search from "./components/Search";
+import Header from "./components/Header";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <Container>
-      <Search query={query} setQuery={setQuery} />
+      <Header query={query} setQuery={setQuery} />
       <Notes notes={notes} query={query} remove={remove} />
     </Container>
   );
