@@ -8,20 +8,22 @@ function Edit(props) {
   const { edit, remove } = props;
   const navigate = useNavigate();
   const location = useLocation();
-  const { id, text: _text, title: _title, mode } = location.state;
 
+  const [id, setId] = useState("");
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
+  const [mode, setMode] = useState("");
 
   useEffect(() => {
-    if (_text !== text) {
-      setText(_text);
+    if (location.state === null) {
+      navigate("/", { replace: true });
+    } else {
+      location.state.id !== id && setId(location.state.id);
+      location.state.title !== title && setTitle(location.state.title);
+      location.state.text !== text && setText(location.state.text);
+      location.state.mode !== mode && setMode(location.state.mode);
     }
-
-    if (_title !== title) {
-      setTitle(_title);
-    }
-  }, [_text, _title]);
+  }, [location.state]);
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);

@@ -16,7 +16,7 @@ function Home(props) {
 
 export default Home;
 
-Header.propTypes = {
+Home.propTypes = {
   query: PropTypes.string.isRequired,
   setQuery: PropTypes.func.isRequired,
   add: PropTypes.func.isRequired,
