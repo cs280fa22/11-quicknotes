@@ -6,7 +6,7 @@ function Note(props) {
   const { note, remove } = props;
 
   return (
-    <Accordion.Item value={note.title}>
+    <Accordion.Item value={note.id}>
       <NoteControl note={note} remove={remove} />
       <Accordion.Panel>{note.text}</Accordion.Panel>
     </Accordion.Item>
